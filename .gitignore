@@ -1,2 +1,5 @@
 # Compiled files
 *.py[cod]
+
+# Development Database
+dev.db
