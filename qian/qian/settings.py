@@ -130,9 +130,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    # Theme
-    "pinax_theme_bootstrap",
-    "django_forms_bootstrap",
 )
 
 # A sample logging configuration. The only tangible logging

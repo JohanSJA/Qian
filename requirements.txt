@@ -1,6 +1,4 @@
 Django==1.5.1
 argparse==1.2.1
 distribute==0.6.34
-django-forms-bootstrap==2.0.3.post1
-pinax-theme-bootstrap==3.0a11
 wsgiref==0.1.2
