@@ -131,6 +131,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     # Django Toolkit for integration with Bootstrap
     "bootstrap_toolkit",
+    # Database migration tools
+    "south",
     # Project specific apps
     "base",
 )
