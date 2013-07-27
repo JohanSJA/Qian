@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% block base_content %}
+  <div class="row">
+    <div class="span6 offset3">
+      {% if form.errors %}
+        <div class="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          Your username and password didn't match. Please try again.
+        </div>
+      {% endif %}
+      <h1>Login</h1>
+      <form class="form-horizontal" action="{% url 'django.contrib.auth.views.login' %}" method="post">
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Login</button>
+            <input type="hidden" name="next" value={{ next }} />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

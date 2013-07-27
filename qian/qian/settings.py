@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     "south",
     # Project specific apps
     "base",
+    "users",
     "stocks",
 )
 
@@ -166,3 +167,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = "/users/login/"
