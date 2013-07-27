@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     "south",
     # Project specific apps
     "base",
+    "stocks",
 )
 
 # A sample logging configuration. The only tangible logging
