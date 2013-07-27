@@ -6,7 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Qian</title>
+    <title>{% block base_title %}Qian{%endblock %} | Qian</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Johan Sim Jian An">
@@ -20,7 +20,7 @@
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    {% block extra_head %}{% endblock %}
+    {% block base_extra_head %}{% endblock %}
   </head>
 
   <body>
@@ -37,6 +37,9 @@
           
           <div class="nav-collapse collapse">
             <ul class="nav">
+              {% block base_nav %}
+                <li><a href="/stocks/">Stocks</a></li>
+              {% endblock %}
             </ul>
           </div>
         </div>
@@ -46,7 +49,7 @@
     <div class="container">
       {% bootstrap_messages %}
       
-      {% block content %}Empty page{% endblock %}
+      {% block base_content %}Empty page{% endblock %}
       
       <hr />
       
