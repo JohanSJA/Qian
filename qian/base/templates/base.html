@@ -38,11 +38,17 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               {% block base_nav %}
-                <li><a href="/stocks/">Stocks</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="/stocks/">Stocks</a></li>
+                {% endif %}
               {% endblock %}
             </ul>
             <ul class="nav pull-right">
-              <li><a href="/users/logout/">Logout</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="/users/logout/">Logout</a></li>
+              {% else %}
+                <li><a href="/users/login/">Login</a></li>
+              {% endif %}
             </ul>
           </div>
         </div>
