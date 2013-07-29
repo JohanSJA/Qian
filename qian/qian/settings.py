@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     # Project specific apps
     "base",
     "users",
+    "uom",
     "stocks",
 )
 

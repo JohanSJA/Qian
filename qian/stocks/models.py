@@ -1,5 +1,7 @@
 from django.db import models
 
+from uom.models import UOM
+
 class Category(models.Model):
     code = models.CharField(max_length=6, unique=True)
     description = models.CharField(max_length=20, blank=True, unique=True)
@@ -15,3 +17,14 @@ class Category(models.Model):
     
     def __unicode__(self):
         return self.code
+
+class Stock(models.Model):
+    category = models.ForeignKey(Category)
+    name = models.CharField(max_length=20, unique=True)
+    description = models.TextField(blank=True)
+    barcode = models.CharField(max_length=50, unique=True)
+    uom = models.ForeignKey(UOM, verbose_name="unit of measure")
+    discontinued = models.BooleanField()
+    
+    def __unicode__(self):
+        return self.name
