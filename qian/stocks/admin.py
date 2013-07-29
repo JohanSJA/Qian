@@ -6,7 +6,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ["code", "description", "type"]
 
 class StockAdmin(admin.ModelAdmin):
-    list_display = ["name", "category", "discontinued"]
+    list_display = ["code", "category", "discontinued"]
     list_filter = ["category", "discontinued"]
 
 admin.site.register(Category, CategoryAdmin)

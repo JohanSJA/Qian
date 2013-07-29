@@ -19,12 +19,12 @@ class Category(models.Model):
         return self.code
 
 class Stock(models.Model):
+    code = models.CharField(max_length=20, unique=True)
     category = models.ForeignKey(Category)
-    name = models.CharField(max_length=20, unique=True)
     description = models.TextField(blank=True)
     barcode = models.CharField(max_length=50, unique=True)
     uom = models.ForeignKey(UOM, verbose_name="unit of measure")
     discontinued = models.BooleanField()
     
     def __unicode__(self):
-        return self.name
+        return self.code

@@ -11,8 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'Stock'
         db.create_table(u'stocks_stock', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('code', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['stocks.Category'])),
-            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20)),
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('barcode', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50)),
             ('uom', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['uom.UOM'])),
@@ -38,10 +38,10 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Stock'},
             'barcode': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'}),
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['stocks.Category']"}),
+            'code': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '20'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'discontinued': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '20'}),
             'uom': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['uom.UOM']"})
         },
         u'uom.uom': {
