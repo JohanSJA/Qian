@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     # Django Toolkit for integration with Bootstrap
-    "bootstrap_toolkit",
+    # "bootstrap_toolkit",
     # Database migration tools
     "south",
     # Project specific apps
