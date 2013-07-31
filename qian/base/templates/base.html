@@ -1,57 +1,73 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+{% load bootstrap_toolkit %}
+{% load url from future %}
+
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>{% block base_title %}Qian{%endblock %} | Qian</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Johan Sim Jian An">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/4.3.1/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/4.3.1/css/foundation.min.css">
-    <script src="//cdn.jsdelivr.net/foundation/4.3.1/js/vendor/custom.modernizr.js"></script>
+    {% bootstrap_stylesheet_tag %}
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    {% bootstrap_stylesheet_tag "responsive" %}
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     {% block base_extra_head %}{% endblock %}
   </head>
 
   <body>
-    <nav class="top-bar">
-      <ul class="title-area">
-	<li class="name">
-	  <h1><a href="/">Qian</a></h1>
-	</li>
-	<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-	<ul class="left">
-	  {% if user.is_authenticated %}
-	    <li><a href="/stocks/">Stocks</a></li>
-	  {% endif %}
-	</ul>
-
-	<ul class="right">
-	  {% if user.is_authenticated %}
-	    <li><a href="/users/logout/">Logout</a></li>
-	  {% else %}
-	    <li><a href="/users/login/">Login</a></li>
-	  {% endif %}
-      </section>
-    </nav>
-
-    {% block base_content %}Empty page{% endblock %}
-    
-    <hr />
-
-    <div class="row">
-      <div class="large-12 columns">
-        <p>&copy; 2013 Johan Sim Jian An</p>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          
+          <a class="brand" href="/">Qian</a>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              {% block base_nav %}
+                {% if user.is_authenticated %}
+                  <li><a href="/stocks/">Stocks</a></li>
+                {% endif %}
+              {% endblock %}
+            </ul>
+            <ul class="nav pull-right">
+              {% if user.is_authenticated %}
+                <li><a href="/users/logout/">Logout</a></li>
+              {% else %}
+                <li><a href="/users/login/">Login</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="//cdn.jsdelivr.net/foundation/4.3.1/js/vendor/zepto.js"></script>
-    <script src="//cdn.jsdelivr.net/foundation/4.3.1/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+    <div class="container">
+      {% bootstrap_messages %}
+      
+      {% block base_content %}Empty page{% endblock %}
+      
+      <hr />
+      
+      <footer>
+        <p>&copy; 2013 Johan Sim Jian An</p>
+      </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {% bootstrap_javascript_tag %}
   </body>
 </html>
